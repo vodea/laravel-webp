@@ -1,5 +1,5 @@
 {
-    "name": "buglinjo/laravel-webp",
+    "name": "vodea/buglinjo-laravel-webp",
     "type": "library",
     "description": "Laravel 5 package for WebP image format",
     "keywords": [

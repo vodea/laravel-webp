@@ -38,7 +38,11 @@ class Cwebp implements WebpInterface
     public function save(string $outputPath, int $quality = null): bool
     {
         $quality = $quality ?? $this->quality;
-        $cmd = $this->cwebpPath . ' -q ' . $quality . ' ' . $this->image->getPathname() . ' -o ' . $outputPath;
+        if (empty($this->image)) {
+            $cmd = $this->cwebpPath . ' -q ' . $quality . ' ' . $this->path . ' -o ' . $outputPath;
+        } else {
+            $cmd = $this->cwebpPath . ' -q ' . $quality . ' ' . $this->image->getPathname() . ' -o ' . $outputPath;
+        }
 
         exec($cmd, $output, $exitCode);
 

@@ -18,6 +18,11 @@ trait WebpTrait
     protected $quality;
 
     /**
+     * @var path
+     */
+    protected $path;
+
+    /**
      * @param UploadedFile $image
      * @return WebpTrait
      */
@@ -25,6 +30,18 @@ trait WebpTrait
     {
         $this->quality = Config::get('laravel-webp.default_quality');
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @param string $path
+     * @return WebpTrait
+     */
+    public function set(string $path): self
+    {
+        $this->quality = Config::get('laravel-webp.default_quality');
+        $this->path = $path;
 
         return $this;
     }
