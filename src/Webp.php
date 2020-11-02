@@ -25,4 +25,22 @@ class Webp
 
         throw new Exception('Driver [' . $driver . '] is not supported.');
     }
+
+    /**
+     * @param string $path
+     * @return Cwebp|Traits\WebpTrait
+     * @throws Exception
+     */
+    public static function set(string $path)
+    {
+        $driver = Config::get('laravel-webp.default_driver');
+
+        if ($driver === 'php-gd') {
+            //
+        } elseif ($driver === 'cwebp') {
+            return (new Cwebp())->set($path);
+        }
+
+        throw new Exception('Driver [' . $driver . '] is not supported.');
+    }
 }
